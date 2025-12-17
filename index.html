@@ -36,11 +36,28 @@
     <h2>📰 Latest News</h2>
     <p>Coming soon...</p>
   </div>
+<div class="card">
+  <h2>🌦️ Weather</h2>
+  <p id="weather">Loading weather...</p>
+</div>
 
-  <div class="card">
-    <h2>🌦️ Weather</h2>
-    <p>Loading weather...</p>
-  </div>
+<script>
+  const apiKey = "ef617cdcf2dfc757520ae8c4367d8841"; // your actual key
+  const city = "Wah"; // you can change this to any city
+
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+    .then(res => res.json())
+    .then(data => {
+      const temp = data.main.temp;
+      const desc = data.weather[0].description;
+      document.getElementById("weather").textContent = `${city}: ${temp}°C, ${desc}`;
+    })
+    .catch(err => {
+      document.getElementById("weather").textContent = "Weather data not available.";
+    });
+</script>
+
+  
 
   <div class="card">
     <h2>📜 Dark Fantasy & History</h2>
@@ -58,5 +75,6 @@
   </div>
 </body>
 </html>
+
 
 
