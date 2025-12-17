@@ -42,23 +42,27 @@
 </div>
 
 <script>
-  const apiKey = "ef617cdcf2dfc757520ae8c4367d8841"; // your actual key
-  const city = "Wah"; // you can change this to any city
+  const apiKey = "ef617cdcf2dfc757520ae8c4367d8841"; // your key
+  const city = "Islamabad"; // try a bigger city first
 
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
-    .then(res => res.json())
-    .then(data => {
-      const temp = data.main.temp;
-      const desc = data.weather[0].description;
-      document.getElementById("weather").textContent = `${city}: ${temp}°C, ${desc}`;
-    })
-    .catch(err => {
+  async function getWeather() {
+    try {
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+      const data = await res.json();
+      if (data.main) {
+        const temp = data.main.temp;
+        const desc = data.weather[0].description;
+        document.getElementById("weather").textContent = `${city}: ${temp}°C, ${desc}`;
+      } else {
+        document.getElementById("weather").textContent = "City not found or API error.";
+      }
+    } catch (err) {
       document.getElementById("weather").textContent = "Weather data not available.";
-    });
+    }
+  }
+
+  getWeather();
 </script>
-
-
-  
 
   <div class="card">
     <h2>📜 Dark Fantasy & History</h2>
@@ -76,6 +80,7 @@
   </div>
 </body>
 </html>
+
 
 
 
