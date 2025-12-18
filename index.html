@@ -2,106 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FutureHub — Your Daily Smart Updates</title>
+
+  <!-- ✅ All CSS goes here, not inside <body> -->
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #0f172a, #1f2937);
-      color: #e5e7eb;
+      background-color: #121212;
+      color: #f0f0f0;
       margin: 0;
       padding: 20px;
     }
-    h1 {
-      text-align: center;
-      color: #38bdf8;
-    }
     .card {
-      background: #111827;
-      padding: 20px;
-      border-radius: 12px;
-      margin: 20px auto;
-      max-width: 600px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
     h2 {
-      color: #22c55e;
+      margin-top: 0;
+      color: #00d4ff;
+    }
+    button {
+      background: #00d4ff;
+      color: #121212;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00aacc;
     }
   </style>
 </head>
+
 <body>
-  <h1>🚀 Welcome to FutureHub</h1>
-  <p style="text-align:center;">Your daily dose of updates, stories, and smart tools.</p>
+  <!-- 🚀 Welcome -->
+  <header class="card">
+    <h1>🚀 Welcome to FutureHub</h1>
+    <p>Your daily dose of updates, stories, and smart tools.</p>
+  </header>
 
-  <div class="card">
-    <h2>📰 Latest News</h2>
-    <p>Coming soon...</p>
-  </div>
-<div class="card">
-  <h2>🌦️ Weather</h2>
-  <p id="weather">Loading weather...</p>
-</div>
-
-<script>
-  const apiKey = "ef617cdcf2dfc757520ae8c4367d8841"; // your key
-  const city = "Islamabad"; // test with a bigger city
-
-  async function getWeather() {
-    try {
-      const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
-      const data = await res.json();
-      console.log(data); // 👈 shows full response in browser console
-      if (data.main) {
-        const temp = data.main.temp;
-        const desc = data.weather[0].description;
-        document.getElementById("weather").textContent = `${city}: ${temp}°C, ${desc}`;
-      } else {
-        document.getElementById("weather").textContent = "Error: " + data.message;
-      }
-    } catch (err) {
-      document.getElementById("weather").textContent = "Weather data not available.";
-      console.error(err);
-    }
-  }
-
-  getWeather();
-<body>
-  <!-- your existing weather section -->
-  <section id="weather" class="card">
-    <h2>Weather</h2>
-    <div id="weather-content">...</div>
-  </section>
-
-  <!-- your existing news section -->
+  <!-- 📄 News -->
   <section id="news" class="card">
-    <h2>News</h2>
-    <div id="news-content">...</div>
+    <h2>📄 Latest News</h2>
+    <div id="news-content">Coming soon...</div>
   </section>
 
-  <!-- ✨ new Dark Fantasy & History section -->
+  <!-- 🌤️ Weather -->
+  <section id="weather" class="card">
+    <h2>🌤️ Weather</h2>
+    <div id="weather-content">Loading weather...</div>
+  </section>
+
+  <!-- 🌑 Dark Fantasy & History -->
   <section id="dark-fantasy" class="card">
-    <h2>Dark Fantasy & History</h2>
+    <h2>🌑 Dark Fantasy & History</h2>
     <div id="dark-content">
       <p>Loading a tale...</p>
     </div>
     <button id="dark-refresh">Refresh</button>
   </section>
-</body>
 
+  <!-- 🤖 AI & Future Trends -->
   <div class="card">
     <h2>🤖 AI & Future Trends</h2>
     <p>Discover the latest in AI and technology.</p>
   </div>
 
+  <!-- 📰 Anime News -->
   <div class="card">
-    <h2>🎌 Anime News</h2>
+    <h2>📰 Anime News</h2>
     <p>Stay tuned for anime updates and releases.</p>
   </div>
+
+  <!-- ✅ Link to your JS -->
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
 
