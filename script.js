@@ -76,3 +76,26 @@ async function loadAITrends() {
 // ✅ Attach button + auto-load
 document.getElementById("ai-refresh").addEventListener("click", loadAITrends);
 window.addEventListener("DOMContentLoaded", loadAITrends);
+// 📰 Anime News loader
+async function loadAnimeNews() {
+  const container = document.getElementById("anime-content");
+  try {
+    container.innerHTML = "<p>Loading anime update...</p>";
+    const res = await fetch("./anime_news.json");
+    const data = await res.json();
+
+    const list = data.entries;
+    const random = list[Math.floor(Math.random() * list.length)];
+
+    container.innerHTML = `
+      <article>
+        <h3>${random.title}</h3>
+        <p>${random.text}</p>
+      </article>
+    `;
+  } catch (error) {
+    container.innerHTML = "<p>Failed to load anime update.</p>";
+  }
+}
+document.getElementById("anime-refresh").addEventListener("click", loadAnimeNews);
+window.addEventListener("DOMContentLoaded", loadAnimeNews);
