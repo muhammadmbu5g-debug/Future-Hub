@@ -64,13 +64,28 @@
   }
 
   getWeather();
-</script>
+<body>
+  <!-- your existing weather section -->
+  <section id="weather" class="card">
+    <h2>Weather</h2>
+    <div id="weather-content">...</div>
+  </section>
 
+  <!-- your existing news section -->
+  <section id="news" class="card">
+    <h2>News</h2>
+    <div id="news-content">...</div>
+  </section>
 
-  <div class="card">
-    <h2>📜 Dark Fantasy & History</h2>
-    <p>Explore epic tales and historical legends.</p>
-  </div>
+  <!-- ✨ new Dark Fantasy & History section -->
+  <section id="dark-fantasy" class="card">
+    <h2>Dark Fantasy & History</h2>
+    <div id="dark-content">
+      <p>Loading a tale...</p>
+    </div>
+    <button id="dark-refresh">Refresh</button>
+  </section>
+</body>
 
   <div class="card">
     <h2>🤖 AI & Future Trends</h2>
@@ -83,6 +98,7 @@
   </div>
 </body>
 </html>
+
 
 
 
