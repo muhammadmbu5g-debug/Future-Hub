@@ -1,0 +1,24 @@
+{
+  "entries": [
+    {
+      "type": "fantasy",
+      "title": "Whispers of the Ruined Keep",
+      "text": "Each midnight, the keep’s stones hum with names of kings who vanished without graves."
+    },
+    {
+      "type": "history",
+      "title": "Echoes of the Library of Alexandria",
+      "text": "Scholars once walked miles to read a single scroll—proof that knowledge can outlive empires."
+    },
+    {
+      "type": "fantasy",
+      "title": "The Lantern of Ash",
+      "text": "When the lantern burns black, it lights paths that were never meant for the living."
+    },
+    {
+      "type": "history",
+      "title": "The Silk Road’s Pulse",
+      "text": "Gold and ideas traveled together—merchants carried maps, monks carried myths."
+    }
+  ]
+}
