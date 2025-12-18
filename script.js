@@ -99,12 +99,7 @@ async function loadAnimeNews() {
 }
 document.getElementById("anime-refresh").addEventListener("click", loadAnimeNews);
 window.addEventListener("DOMContentLoaded", loadAnimeNews);
-// Auto-refresh every 5 minutes
-setInterval(() => {
-  loadDarkFantasy();   // your function for Dark Fantasy
-  loadAITrends();      // your function for AI Trends
-  loadAnimeNews();     // your function for Anime News
-}, 300000); // 300000 ms = 5 minutes
+
 // 🌤️ Weather loader
 async function loadWeather() {
   const container = document.getElementById("weather-content");
@@ -128,3 +123,38 @@ async function loadWeather() {
     container.innerHTML = "<p>Failed to load weather.</p>";
   }
 }
+// 📰 Latest News loader
+async function loadNews() {
+  const container = document.getElementById("news-content");
+  const apiKey = "c591aa9f6e0d4a1aa5edc01e1e7b10bd"; // ✅ Your NewsAPI key
+  const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+
+  try {
+    container.innerHTML = "<p>Loading news...</p>";
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (data.articles && data.articles.length > 0) {
+      const headlines = data.articles.slice(0, 5) // show top 5
+        .map(article => `
+          <article>
+            <h3>${article.title}</h3>
+            <p>${article.description || ""}</p>
+            <a href="${article.url}" target="_blank">Read more</a>
+          </article>
+        `).join("");
+
+      container.innerHTML = headlines;
+    } else {
+      container.innerHTML = "<p>No news found.</p>";
+    }
+  } catch (error) {
+    container.innerHTML = "<p>Failed to load news.</p>";
+  }
+}
+// Auto-refresh every 5 minutes
+setInterval(() => {
+  loadDarkFantasy();   // your function for Dark Fantasy
+  loadAITrends();      // your function for AI Trends
+  loadAnimeNews();     // your function for Anime News
+}, 300000); // 300000 ms = 5 minutes
