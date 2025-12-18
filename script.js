@@ -99,4 +99,11 @@ async function loadAnimeNews() {
 }
 document.getElementById("anime-refresh").addEventListener("click", loadAnimeNews);
 window.addEventListener("DOMContentLoaded", loadAnimeNews);
+// Auto-refresh every 5 minutes
+setInterval(() => {
+  loadDarkFantasy();   // your function for Dark Fantasy
+  loadAITrends();      // your function for AI Trends
+  loadAnimeNews();     // your function for Anime News
+}, 300000); // 300000 ms = 5 minutes
+
 
