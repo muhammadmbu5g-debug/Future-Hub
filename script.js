@@ -99,3 +99,4 @@ async function loadAnimeNews() {
 }
 document.getElementById("anime-refresh").addEventListener("click", loadAnimeNews);
 window.addEventListener("DOMContentLoaded", loadAnimeNews);
+
