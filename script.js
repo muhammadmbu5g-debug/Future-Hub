@@ -52,3 +52,27 @@ document.getElementById("dark-refresh").addEventListener("click", loadDarkFantas
 
 // Optionally load a tale automatically when the page opens
 window.addEventListener("DOMContentLoaded", loadDarkFantasy);
+async function loadAITrends() {
+  const container = document.getElementById("ai-content");
+  try {
+    container.innerHTML = "<p>Loading AI update...</p>";
+    const res = await fetch("./ai_trends.json");
+    const data = await res.json();
+
+    const list = data.entries;
+    const random = list[Math.floor(Math.random() * list.length)];
+
+    container.innerHTML = `
+      <article>
+        <h3>${random.title}</h3>
+        <p>${random.text}</p>
+      </article>
+    `;
+  } catch (error) {
+    container.innerHTML = "<p>Failed to load AI update.</p>";
+  }
+}
+
+// ✅ Attach button + auto-load
+document.getElementById("ai-refresh").addEventListener("click", loadAITrends);
+window.addEventListener("DOMContentLoaded", loadAITrends);
