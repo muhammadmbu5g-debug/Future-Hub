@@ -105,5 +105,26 @@ setInterval(() => {
   loadAITrends();      // your function for AI Trends
   loadAnimeNews();     // your function for Anime News
 }, 300000); // 300000 ms = 5 minutes
+// 🌤️ Weather loader
+async function loadWeather() {
+  const container = document.getElementById("weather-content");
+  const apiKey = "ef617cdcf2dfc757520ae8c4367d8841"; // ✅ Your API key
+  const city = "Wah"; // ← You can change this to any city
 
+  try {
+    container.innerHTML = "<p>Loading weather...</p>";
+    const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
+    const data = await res.json();
 
+    const temp = data.main.temp;
+    const desc = data.weather[0].description;
+    const icon = data.weather[0].icon;
+
+    container.innerHTML = `
+      <p><strong>${city}</strong>: ${temp}°C, ${desc}</p>
+      <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc}" />
+    `;
+  } catch (error) {
+    container.innerHTML = "<p>Failed to load weather.</p>";
+  }
+}
