@@ -47,5 +47,8 @@ async function loadDarkFantasy() {
 
 document.addEventListener("DOMContentLoaded", () => {
   loadDarkFantasy();
-  document.getElementById("dark-refresh").addEventListener("click", loadDarkFantasy);
-});
+ // Attach the refresh button to the function
+document.getElementById("dark-refresh").addEventListener("click", loadDarkFantasy);
+
+// Optionally load a tale automatically when the page opens
+window.addEventListener("DOMContentLoaded", loadDarkFantasy);
